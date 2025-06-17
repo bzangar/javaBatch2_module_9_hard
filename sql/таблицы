@@ -1,0 +1,37 @@
+-- таблица students
+
+CREATE TABLE public.students (
+	id serial4 NOT NULL,
+	"name" varchar NOT NULL,
+	is_attended bool DEFAULT false NULL,
+	group_name varchar NOT NULL,
+	CONSTRAINT students_pkey PRIMARY KEY (id)
+);
+
+
+
+-- таблица students
+CREATE TABLE public.student2 (
+	id serial4 NOT NULL,
+	"name" varchar(20) NULL,
+	group_name_id int4 NULL,
+	is_attended bool NULL,
+	CONSTRAINT student2_pkey PRIMARY KEY (id)
+);
+
+
+
+
+-- public.student2 внешние включи
+ALTER TABLE public.student2 ADD CONSTRAINT fk_student_group_name FOREIGN KEY (group_name_id) REFERENCES public."groups"(id);
+
+
+
+
+
+-- таблица groups
+ CREATE TABLE public."groups" (
+ 	id serial4 NOT NULL,
+ 	group_name varchar(20) NULL,
+ 	CONSTRAINT groups_pkey PRIMARY KEY (id)
+ );
